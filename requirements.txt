@@ -1,0 +1,5 @@
+Flask~=1.1
+requests~=2.22
+flask_login
+flask_sqlalchemy
+flask_mail

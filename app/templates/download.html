@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="media">
+    <img src="https://it.zolux.com/media/cache/img_text_block_large_584x475_up/uploads/files/Rejoignez-nous/photo-princip-rejoignez.jpg" style="padding:20px">
+    <div class="media-body">
+        <h2 class="title" style="font-family: Comic Sans MS, Comic Sans, cursive; padding:20px">Entra nella blockchain!</h2>
+        <h3 class="title" style="font-family: Comic Sans MS, Comic Sans, cursive; padding:20px">Requisiti:</h3>
+        <p style="margin-left:10px; margin-right:10px">Potrai diventare un nodo della blockchain solo se disponi di un pc con sistema operativo basato su Linux e un indirizzo IP pubblico fisso.</p>
+        <p style="margin-left:10px; margin-right:10px">Scaricando il file eseguibile potrai diventare un nodo attivo della blockchain</p>
+        <!-- <--!a href = "file:///home/marco/python_blockchain_app/blockchain.zip" download>Download</a>--> 
+        <p>
+            <form action="/download_file">
+            <input type="submit" value="Download" style="margin-left:270px" class="btn btn-info btn-sm"></input>
+            </form>
+        </p>
+        <div>
+            <p style="margin-left:10px; margin-right:10px">
+                Dopo aver eseguito il file, per sincronizzare il tuo nodo con la blockchain attuale, premere questo bottone
+            </p>
+            <form action="/sync_node" method="post">
+                <input class="btn btn-secondary" type="submit" name="sync" value="Submit" style="margin-left:270px">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% if ok==True %}
+    <script>window.alert('nodo aggiunto alla rete') </script>
+{% endif %}
+
+{% if ok==False %}
+	<script>window.alert('Errore') </script>
+	{% endif %}
+{% endblock %}

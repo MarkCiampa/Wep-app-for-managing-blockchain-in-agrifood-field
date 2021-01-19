@@ -1,0 +1,39 @@
+<!-- templates/login.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="rounded; mx-auto" style="width: 400px; margin:20px 0px 0px 0px; background: rgb(192, 192, 192)"> 
+ <div class="column is-4 is-offset-4">
+  <br>
+    <h3 class="title" style="margin:10px 0px 20px 160px;">Login</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script>
+            window.alert('{{ messages[0] }}')
+             </script>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/login">
+                  <div class="form-group" style="margin:0px 7px 0px 7px;">
+                    <label for="exampleDropdownFormEmail1">Nr. Partita Iva</label>
+                    <input type="text" class="form-control" name="p_iva" placeholder="nr. partita iva">
+                  </div>
+                  <br>
+                  <div class="form-group" style="margin:0px 7px 0px 7px;">
+                    <label for="exampleDropdownFormPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Your Password">
+                  </div>
+                 
+                  <button type="submit" class="btn btn-primary" style="margin:10px 0px 20px 160px;">Sign in</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/signup">Non hai un account? Sign up</a>
+                <a class="dropdown-item" href="/reset_password">Password dimenticata?</a>
+            </div>
+        </form>
+    </div>
+ </div>
+</div>
+ {% endblock %}

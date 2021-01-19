@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+<div>
+    
+{% block content %}
+    {% if ok==True %}
+        <script>window.alert('il node server è stato cambiato') </script>
+    {% endif %}
+
+    {% if ok==False %}
+	    <script>window.alert('Errore') </script>
+	{% endif %}
+            
+    <h5 class="font-weight-bold" style="margin-left:100px; margin-top:10px">Gestione rete</h5>
+
+    {% for peer in peers%}
+        <div class="list-group-item list-group-item-action list-group-item-dark" style="width:300px; margin-left:100px"> 
+            {{peer }}
+        </div>
+
+    {% endfor %}
+</div>
+
+<br>
+
+<div>
+<b style="margin-left:100px">Il node server attuale è:</b>
+<label>{{ip}} </label>
+</div>
+<br>
+{% if len != 0%}
+<div>
+
+<h5 style="margin-left:100px">Cambia il server node</h5>
+<form action="/admin_chain" id="textform" method="post">
+    <input type="text" class="form-control" id="formGroupExampleInput2" name="new_servernode" style="width:300px; margin-left:100px" placeholder="newservernode">
+    <input type="submit" class="btn btn-secondary" style="margin-left:220px; margin-top:5px" value="change">
+</form>
+</div>
+{% endif %}
+{% endblock %}

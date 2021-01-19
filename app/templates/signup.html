@@ -1,0 +1,96 @@
+<!-- templates/signup.html -->
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if message %}
+<script>
+  window.alert("{{message}}")
+</script>
+{% endif %}
+
+<div class="container">  
+        <div class="row justify-content-around">
+          <div class="col-sm">
+              <div class="signup-content">
+                <div class="signup-img">
+                  <img src="/static/images/register.jpg" width="500" height="400" alt="...">
+                </div>
+              </div>
+          </div>
+          <div class="col-sm">
+              <h3 class="text-body" style="margin:25px 0px 0px 150px;">Registrati ora</h3>
+              <br>
+              <form method="POST" action="/signup">
+                
+                  <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Partita Iva</span>
+                      </div>
+                      <input type="text" class="form-control" name="p_iva" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+                      </div>
+                      <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Sede legale</span>
+                      </div>
+                      <input type="text" class="form-control" name="sede" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Nome Azienda</span>
+                      </div>
+                      <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+                      </div>
+                      <input type="password" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  
+                  <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">About you...</span>
+                      </div>
+                      <textarea class="form-control" name="info" aria-label="With textarea"></textarea>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-outline-primary" style="margin:5px 0px 0px 200px;">Registrati</button>
+                  </div>
+                  
+                </form>
+                  
+                      
+      <div class="form-group">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              <div class="notification is-danger">
+                  {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
+              </div>
+          {% endif %}
+          {% endwith %}
+
+      </div>
+      </div>
+ </div>
+</div>
+
+<style> 
+  .text-body { 
+      color: rgb(10, 10, 10); 
+      text-shadow: 2px 2px 5px rgb(114, 168, 248);
+  } 
+</style>
+
+{% endblock %}

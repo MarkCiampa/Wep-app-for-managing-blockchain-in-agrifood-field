@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table table-bordered table-sm" style="border:1px solid #0c0c0c">
+  <thead>
+    <tr class="table-success" style="border:1px solid #0c0c0c">
+      <th scope="col" style="border:1px solid #0c0c0c">p_iva</th>
+      <th scope="col" style="border:1px solid #0c0c0c">email</th>
+      <th scope="col" style="border:1px solid #0c0c0c">Password</th>
+      <th scope="col" style="border:1px solid #0c0c0c">name</th>
+      <th scope="col" style="border:1px solid #0c0c0c">informazioni</th>
+      <th scope="col" style="border:1px solid #0c0c0c">sede</th>
+    </tr>
+  </thead>
+
+  <tbody style="border:1px solid #0c0c0c">
+    {% for item in items%}
+        <tr class="table-light" style="border:1px solid #0c0c0c">
+            <td style="border:1px solid #0c0c0c"> {{item.p_iva}} </td>
+            <td style="border:1px solid #0c0c0c"> {{item.email}} </td>
+            <td style="border:1px solid #0c0c0c"> {{item.password}} </td>
+            <td style="border:1px solid #0c0c0c"> {{item.name}} </td>
+            <td style="border:1px solid #0c0c0c"> {{item.info}} </td>
+            <td style="border:1px solid #0c0c0c"> {{item.sede}} </td>
+        </tr>
+    {% endfor%}
+  </tbody>
+</table>
+
+<!-- <table style="width:100%"> -->
+    <!-- <tr>
+      <th>p_iva</th>
+      <th>email</th>
+      <th>Password</th>
+      <th>name</th>
+      <th>informazioni</th>
+      <th>sede</th>
+      
+    </tr>
+    <tr>
+      <td >Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+  </table>
+  <table> -->
+    <!-- <th>p_iva</th>
+    <th>email</th>
+    <th>Password</th>
+    <th>name</th>
+    <th>informazioni</th>
+    <th>sede</th>
+    {% for item in items%}
+        <tr>
+            <td> {{item.p_iva}} </td>
+            <td> {{item.email}} </td>
+            <td> {{item.password}} </td>
+            <td> {{item.name}} </td>
+            <td> {{item.info}} </td>
+            <td> {{item.sede}} </td>
+        </tr>
+    {% endfor%}
+    </table> -->
+
+    <br>
+    <br>
+    <div align="center">
+
+    <select class="form-control" id="op" name="operazione" style="width: 400px;" aria-placeholder="seleziona">
+      <option>cambia password di un utente</option>
+      <option>cancella utente</option>
+    </select>
+    <br>
+  
+    <button type='submit' onclick="operation();" class="btn btn-success">Seleziona</button>
+    <br>
+    </div>
+    <br>
+  <script>
+    function operation()
+    {
+        var camp = document.getElementById("op").value;
+        
+        if(camp=="cambia password di un utente")
+        {
+           
+            var pasw= document.getElementById("elem_password");
+            var del= document.getElementById("elem_del");
+            if(del!=  null)
+            {
+                document.getElementById("elem_del").remove();
+            }
+            if(pasw==  null){
+            document.getElementById("type_div").innerHTML=document.getElementById("type_div").innerHTML+
+            "<form id='elem_password' action='/admin_user' method='post'> <input type='text'  name='p_iva' class='input_text' id='p_iva_text' placeholder='metti la partita iva'> <input type='password'  name= 'password' class='input_text' id='password_text' placeholder='Inserisci nuova password'> <input type='submit' class='btn btn-secondary btn-sm' style='margin-bottom:5px' value='cambia' > </form>"
+            }
+
+        }
+        if(camp=="cancella utente")
+        {
+           
+            var pasw= document.getElementById("elem_password");
+            var del= document.getElementById("elem_del");
+            if(pasw!=  null)
+            {
+                document.getElementById("elem_password").remove();
+            }
+            if(del==  null){
+            document.getElementById("type_div").innerHTML=document.getElementById("type_div").innerHTML+
+            "<form id='elem_del' action='/admin_user' method='post'> <input type='text'  name='p_iva' class='input_text' id='p_iva_text' placeholder='inserisci la partita iva'> <input type='submit' class='btn btn-secondary btn-sm' style='margin-bottom:5px' value='cancella utente' > </form>"
+            }
+
+        }
+      }
+     
+      
+    
+      </script>
+      <div id= "type_div" align="center">
+        
+
+      </div>
+
+      
+
+{% endblock %}

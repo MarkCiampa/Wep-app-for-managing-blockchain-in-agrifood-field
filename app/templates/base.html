@@ -1,0 +1,101 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <title>agrifood app</title>
+</head>
+  <body style="background-color:rgba(224, 224, 218, 0.651);">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/search/<None>">
+        <img src="https://www.fem2ambiente.com/wp-content/uploads/2019/03/qrcode-1-300x216.jpg" width="50" height="50" alt="" class="rounded-circle">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/search/<None>">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/download">Entra nella blockchain</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/ChiSiamo">Chi Siamo</a>
+          </li>
+            {% if user  %}
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/logout">Logout</a>
+          </li>
+          <li class="nav-item active" id="protected">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/protected">Aggiungi Prodotto</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/mmi">Modifica info personali</a> 
+          </li>  
+            {% else %}
+            <li class="nav-item active">
+            <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/login">Login</a>
+            </li>
+            {% endif %}
+            {% if user== "admin"  %}
+            <script>document.getElementById("protected").remove();
+            </script>
+
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/admin_user">Gestione Utenti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold" style=" color: rgb(255, 255, 255);" href="/admin_chain">Gestione Nodi</a>
+            </li>
+            {% endif %}
+          </li>
+        </ul>
+        </div>
+
+        
+
+    </nav>
+    
+    <!-- <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Agrifood</h1>
+        <p class="lead">Welcome back to our blockchain!</p>
+      </div>
+    </div> -->
+    
+
+    <!-- <a href="/search/{{None}}"><button align="right" >search product</button></a>
+    {% if user  %}
+    <a href="/protected"><button align="center" >add product</button></a>
+    {% endif %} -->
+    </div>
+    
+    
+      
+    <!-- <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %} -->
+    {% block content %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<style> 
+  .nav-link { 
+      color: rgb(10, 10, 10); 
+      text-shadow: 2px 2px 5px rgb(138, 138, 138);
+  } 
+</style>

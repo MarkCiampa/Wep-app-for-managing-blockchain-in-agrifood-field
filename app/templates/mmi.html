@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% if ok==true%}
+<script> window.alert(" la modifica è stata effettuata")</script>
+{% endif%}
+{% if ok==false%}
+<script> window.alert(" la modifica non è stata effettuata a causa di un errore")</script>
+{% endif%}
+{% if user=="admin"%}
+<div class="rounded; mx-auto" align="center" style="width: 500px; margin:20px 0px 20px 0px; background: rgb(192, 192, 192)">
+    <h4 class="font-weight-bold" style="margin-top:20px">Ciao Admin! Vuoi cambiare password?</h4>
+    <form id='elem_password' action='/mmi' method='post'> 
+        <input type='password'  name= 'password' class='input_text' id='password_text' style="margin-left:70px; margin-top:10px" placeholder='Enter new Password'> 
+        <input type='submit' class='btn btn-secondary btn-sm' style="margin-bottom: 5px" value='cambia' > 
+    </form>
+</div>
+
+{% else%}
+<div class="rounded; mx-auto" style="width: 800px; margin:20px 0px 0px 0px; background: rgb(192, 192, 192)"> 
+    <div class="media">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU3bxdGrGsqXIKsZuE18ZvdVDny7HrCikQNg&usqp=CAU" style="padding:20px">
+        <div class="media-body">
+            <h2 style="font-family: Comic Sans MS, Comic Sans, cursive;margin:20px">Cosa vuoi cambiare?</h2>
+            <div>
+                <select class="form-control" id="camp" name="campo" aria-placeholder="seleziona" style="width:450px">
+                    <option>password</option>
+                    <option>informazioni</option>
+                    <option>sede</option>
+                    <option>email</option>
+                </select>
+                <button type='submit' onclick="choose();" class="btn btn-primary" style="margin:10px 0px 20px 160px;">Seleziona</button>
+            
+                <script>
+                    function choose()
+                    {
+                        var camp = document.getElementById("camp").value;
+                        
+                        if(camp=="password")
+                        {
+                            var sede = document.getElementById("elem_sede");
+                            var pasw= document.getElementById("elem_password");
+                            var mail= document.getElementById("elem_mail");
+                            var info= document.getElementById("elem_info");
+                            if(sede!=  null)
+                            {
+                                document.getElementById("elem_sede").remove();
+                            }
+                            if(mail!=  null)
+                            {
+                                document.getElementById("elem_mail").remove();
+                            }
+                            if(info!=  null)
+                            {
+                                document.getElementById("elem_info").remove();
+                            }
+                
+                            if(pasw==  null){
+                            document.getElementById("type_div").innerHTML=document.getElementById("type_div").innerHTML+
+                            "<form id='elem_password' action='/mmi' method='post'> <input type='password'  name= 'password' class='input_text' id='password_text' placeholder='Inserire nuova password'> <input type='submit' class='btn btn-light btn-sm' style='margin-bottom:5px' value='cambia' > </form>"
+                            }
+                
+                        }
+                        if(camp=="sede")
+                        {
+                            var sede = document.getElementById("elem_sede");
+                            var pasw= document.getElementById("elem_password");
+                            var mail= document.getElementById("elem_mail");
+                            var info= document.getElementById("elem_info");
+                            if(pasw!=  null)
+                            {
+                                document.getElementById("elem_password").remove();
+                            }
+                            if(mail!=  null)
+                            {
+                                document.getElementById("elem_mail").remove();
+                            }
+                            if(info!=  null)
+                            {
+                                document.getElementById("elem_info").remove();
+                            }
+                            if(sede==  null){           
+                            document.getElementById("type_div").innerHTML=document.getElementById("type_div").innerHTML+
+                            "<form id='elem_sede' action='/mmi' method='post'> <input type='text'  name= 'sede' class='input_text' id='sede_text' placeholder='Inserire nuova sede'> <input type='submit' class='btn btn-light btn-sm' style='margin-bottom:5px' value='cambia' > </form>"
+                            }
+                
+                        }
+                        if(camp=="email")
+                        {
+                            var sede = document.getElementById("elem_sede");
+                            var pasw= document.getElementById("elem_password");
+                            var mail= document.getElementById("elem_mail");
+                            var info= document.getElementById("elem_info");
+                            if(pasw!=  null)
+                            {
+                                document.getElementById("elem_password").remove();
+                            }
+                            if(sede!=  null)
+                            {
+                                document.getElementById("elem_sede").remove();
+                            }
+                            if(info!=  null)
+                            {
+                                document.getElementById("elem_info").remove();
+                            }
+                            if(mail==  null){           
+                            document.getElementById("type_div").innerHTML=document.getElementById("type_div").innerHTML+
+                            "<form id='elem_mail' action='/mmi' method='post'> <input type='text'  name= 'mail' class='input_text' id='mail_text' placeholder='Inserire nuova email'> <input type='submit' class='btn btn-light btn-sm' style='margin-bottom:5px' value='cambia' > </form>"
+                            }
+                
+                        }
+                        if(camp=="informazioni")
+                        {
+                            var sede = document.getElementById("elem_sede");
+                            var pasw= document.getElementById("elem_password");
+                            var mail= document.getElementById("elem_mail");
+                            var info= document.getElementById("elem_info");
+                            if(pasw!=  null)
+                            {
+                                document.getElementById("elem_password").remove();
+                            }
+                            if(mail!=  null)
+                            {
+                                document.getElementById("elem_mail").remove();
+                            }
+                            if(sede!=  null)
+                            {
+                                document.getElementById("elem_sede").remove();
+                            }
+                            if(info==  null){           
+                            document.getElementById("type_div").innerHTML=document.getElementById("type_div").innerHTML+
+                            "<form id='elem_info' action='/mmi' method='post'> <textarea rows='2' cols='45' name= 'info' class='input_text' id='sede_text' placeholder='Inserire modifiche sulle informazioni'></textarea> <input type='submit' class='btn btn-light btn-sm' style='margin-bottom:20px' value='cambia' > </form>"
+                            }
+                
+                        }
+                
+                    }
+                </script>
+                </div >
+                <div id= "type_div">
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endif%}
+{% endblock %}
