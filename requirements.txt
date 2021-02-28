@@ -1,5 +1,5 @@
-Flask~=1.1
-requests~=2.22
+Flask
+requests
 flask_login
 flask_sqlalchemy
 flask_mail
